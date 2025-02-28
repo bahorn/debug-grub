@@ -56,3 +56,9 @@ debug offset:
         -ex "source ./gdb_grub" \
         -ex "dynamic_load_symbols {{offset}}" \
         -ex "source {{pwd}}/scripts/grub-gdb.gdbs"
+
+
+[group('dev')]
+install-clangd:
+    cat configs/clangd | \
+        sed -e "s,REPLACEME,{{pwd}}/modules/grub," > {{pwd}}/modules/grub/.clangd
